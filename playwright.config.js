@@ -3,8 +3,10 @@ import { defineConfig, devices } from '@playwright/test';
 
 import {defineBddConfig} from 'playwright-bdd';
 const bddTestDir = defineBddConfig({
-  paths: ['tests\\Features\\OrangeHRMSearchLeaveList.feature'],
-  steps: ['tests\\TestSteps\\OrangeHRMSearchLeaveListSteps.js']
+  //paths: ['tests\\Features\\OrangeHRMSearchLeaveList.feature'],
+  //steps: ['tests\\TestSteps\\OrangeHRMSearchLeaveListSteps.js']
+  paths: ['tests/Features/OrangeHRMSearchLeaveList.feature'],
+  steps: ['tests/TestSteps/OrangeHRMSearchLeaveListSteps.js']
 });
 
 /**
