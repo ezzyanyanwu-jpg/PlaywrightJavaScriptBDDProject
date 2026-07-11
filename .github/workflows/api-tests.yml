@@ -3,14 +3,14 @@ name: API Playwright Tests
 on:
   workflow_dispatch:
   push:
-    branches: [ main, master ]
+    branches: [ main ]  # master is excluded - pushes to master → will not run this API workflow. It will run only on main pushes. Add master to run on master pushes 
     paths:
       - 'tests/RestAssuredAPITest/**'
       - 'playwright.config.js'
       - 'package.json'
       - 'package-lock.json'
   pull_request:
-    branches: [ main, master ]
+    branches: [ main ]  # master is excluded - pull requests to master → will not run this API workflow. It will run only on main pull requests. Add master to run on master pull requests
     paths:
       - 'tests/RestAssuredAPITest/**'
       - 'playwright.config.js'
@@ -37,3 +37,16 @@ jobs:
 
       - name: Run API tests only
         run: npx playwright test --project=api
+
+  deploy:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    needs: api-tests
+
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v4
+
+      - name: Deploy to Production
+        run: |
+          echo "Deploying to production..."

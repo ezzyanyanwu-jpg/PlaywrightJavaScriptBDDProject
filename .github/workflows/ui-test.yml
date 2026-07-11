@@ -18,7 +18,7 @@ jobs:
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
     - name: Run UI BDD tests only
-      run: npx playwright test --project=chromium-bdd
+      run: xvfb-run -a npm run test:bdd:headed
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
@@ -38,7 +38,3 @@ jobs:
       - name: Deploy to Production
         run: |
           echo "Deploying to production..."
-          # Add your deployment commands here
-          # For example, you might use SSH to deploy to a server or use a cloud provider's CLI tool
-          # ssh user@yourserver "cd /path/to/app && git pull && npm install && npm run start"
-          
