@@ -1,4 +1,4 @@
-// Generated from: tests\Features\OrangeHRMSearchLeaveList.feature
+// Generated from: tests/Features/OrangeHRMSearchLeaveList.feature
 import { test } from "playwright-bdd";
 
 test.describe('OrangeHRM Login', () => {
@@ -59,7 +59,7 @@ test.afterEach('AfterEach Hooks', ({ $runScenarioHooks, page }) => $runScenarioH
 
 test.use({
   $test: [({}, use) => use(test), { scope: 'test', box: true }],
-  $uri: [({}, use) => use('tests\\Features\\OrangeHRMSearchLeaveList.feature'), { scope: 'test', box: true }],
+  $uri: [({}, use) => use('tests/Features/OrangeHRMSearchLeaveList.feature'), { scope: 'test', box: true }],
   $bddFileData: [({}, use) => use(bddFileData), { scope: "test", box: true }],
 });
 
