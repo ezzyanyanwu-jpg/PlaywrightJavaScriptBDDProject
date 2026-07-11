@@ -1,0 +1,14 @@
+{
+  "leaveSearch": [
+    {
+      "employee": "Jake Ben",
+      "fromDate": "2026-12-04",
+      "toDate": "2026-10-31"
+    },
+    {
+      "employee": "Jude Oliver",
+      "fromDate": "2026-12-05",
+      "toDate": "2026-06-28"
+    }
+  ]
+}

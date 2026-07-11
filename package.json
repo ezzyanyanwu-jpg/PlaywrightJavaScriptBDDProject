@@ -1,0 +1,27 @@
+{
+  "name": "playwrightjavascriptbddprojects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed",
+    "test:all": "playwright test --reporter=list",
+    "test:all:headed": "playwright test --headed",
+    "test:bdd": "playwright test --project=chromium-bdd --reporter=list",
+    "test:bdd:headed": "playwright test --project=chromium-bdd --headed",
+    "test:api": "playwright test --project=api --reporter=list",
+    "test:api:headed": "playwright test --project=api --headed",
+    "test:api:get": "playwright test tests/RestAssuredAPITest/GETMethod.spec.js --project=api --reporter=list"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "devDependencies": {
+    "@cucumber/cucumber": "^12.8.1",
+    "@playwright/test": "^1.59.1",
+    "@types/node": "^25.6.0",
+    "playwright-bdd": "^8.5.0"
+  }
+}

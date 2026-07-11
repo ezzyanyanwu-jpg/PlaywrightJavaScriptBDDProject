@@ -1,0 +1,16 @@
+{
+  "validUser": {
+    "username": "Admin",
+    "password": "admin123"
+  },
+  "invalidUsers": [
+    {
+      "username": "Admin23",
+      "password": "admin567"
+    },
+    {
+      "username": "Admin888",
+      "password": "admif4567"
+    }
+  ]
+}
