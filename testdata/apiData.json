@@ -1,0 +1,28 @@
+{
+  "get": {
+    "postId": 1,
+    "expectedUserId": 1,
+    "expectedTitle": "sunt aut facere repellat provident occaecati excepturi optio reprehenderit"
+  },
+
+  "post": {
+    "title": "This is a new post",
+    "body": "This is a body",
+    "userId": 1
+  },
+
+  "put": {
+    "id": 1,
+    "title": "foo",
+    "body": "bar",
+    "userId": 1
+  },
+
+  "patch": {
+    "title": "foo"
+  },
+
+  "delete": {
+    "postId": 1
+  }
+}

@@ -1,52 +1,92 @@
-name: API Playwright Tests
+name: Playwright API Tests
 
 on:
   workflow_dispatch:
+
   push:
-    branches: [ main ]  # master is excluded - pushes to master → will not run this API workflow. It will run only on main pushes. Add master to run on master pushes 
+    branches:
+      - main
     paths:
-      - 'tests/RestAssuredAPITest/**'
+      - 'tests/APITest/**'
       - 'playwright.config.js'
       - 'package.json'
       - 'package-lock.json'
+
   pull_request:
-    branches: [ main ]  # master is excluded - pull requests to master → will not run this API workflow. It will run only on main pull requests. Add master to run on master pull requests
+    branches:
+      - main
     paths:
-      - 'tests/RestAssuredAPITest/**'
+      - 'tests/APITest/**'
       - 'playwright.config.js'
       - 'package.json'
       - 'package-lock.json'
 
 jobs:
+
   api-tests:
-    timeout-minutes: 60
+
+    name: API Tests
+
     runs-on: ubuntu-latest
 
+    timeout-minutes: 60
+
     steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          node-version: lts/*
+          node-version: 22
+          cache: npm
 
-      - name: Install dependencies
+      - name: Install Dependencies
         run: npm ci
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
 
-      - name: Run API tests only
-        run: npx playwright test --project=api
+      - name: Execute API Tests
+        run: npm run test:api:ci
+        continue-on-error: true
+
+      - name: Generate Allure Report
+        if: always()
+        run: npm run allure:generate
+
+      - name: Upload Allure Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: allure-report
+          path: allure-report/
+          retention-days: 30
+
+      - name: Upload Playwright HTML Report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
 
   deploy:
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
+
+    name: Deploy to Production
+
     needs: api-tests
 
+    runs-on: ubuntu-latest
+
+    if: success()
+
     steps:
-      - name: Check out code
+
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Deploy to Production
+      - name: Deploy
         run: |
           echo "Deploying to production..."

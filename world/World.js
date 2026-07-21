@@ -28,25 +28,6 @@ export class World {
 
         };
 
-        // // Api calls
-        // this.api = {
-        //     // login: new LoginApi(request),
-        //     // leave: new LeaveApi(request)
-        // };
-
-        // // Database
-        // this.database = {
-        //     // employee: new EmployeeRepository(),
-        //     // leave: new LeaveRepository()
-        // };
-
-        // this.utils = {
-        //     logger: Logger,
-        //     screenshot: ScreenshotHelper,
-        //     wait: WaitHelper,
-        //     date: DateHelper
-        // };
-
     }
 
 }

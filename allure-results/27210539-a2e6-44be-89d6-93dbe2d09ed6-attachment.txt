@@ -1,0 +1,13 @@
+[INFO] Opening OrangeHRM
+[INFO] Chrome browser launched
+[INFO] Verifying Login Page
+[INFO] Entering username: Admin
+[INFO] Clicking Login
+[INFO] Opening Leave Module
+[INFO] From : 2026-12-05
+[INFO] To : 2026-28-06
+[INFO] Selecting Rejected Status
+[INFO] Employee : Jude Oliver
+[INFO] Searching Leave Records
+[INFO] Verifying No Records Found
+[INFO] Scenario Finished

@@ -1,0 +1,3 @@
+[INFO] Verifying Status Code: 201
+[INFO] Parsing JSON Response
+[INFO] Verifying title

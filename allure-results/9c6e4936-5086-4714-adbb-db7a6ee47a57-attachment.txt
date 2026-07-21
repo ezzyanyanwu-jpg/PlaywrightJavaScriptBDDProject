@@ -1,0 +1,6 @@
+[INFO] Verifying Status Code: 200
+[INFO] Parsing JSON Response
+[INFO] Verifying Status Code: 200
+[INFO] Parsing JSON Response
+[INFO] Verifying collection size is greater than 0
+[INFO] Verifying postId

@@ -1,0 +1,7 @@
+[INFO] Opening OrangeHRM
+[INFO] Chrome browser launched
+[INFO] Verifying Login Page
+[INFO] Entering username: Admin888
+[INFO] Clicking Login
+[INFO] Verifying Invalid Credentials
+[INFO] Scenario Finished

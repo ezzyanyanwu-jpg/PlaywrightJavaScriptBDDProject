@@ -4,15 +4,45 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "playwright test",
-    "test:headed": "playwright test --headed",
-    "test:all": "playwright test --reporter=list",
-    "test:all:headed": "playwright test --headed",
-    "test:bdd": "playwright test --project=chromium-bdd --reporter=list",
-    "test:bdd:headed": "playwright test --project=chromium-bdd --headed",
-    "test:api": "playwright test --project=api --reporter=list",
-    "test:api:headed": "playwright test --project=api --headed",
-    "test:api:get": "playwright test tests/RestAssuredAPITest/GETMethod.spec.js --project=api --reporter=list"
+
+    "clean:allure": "rimraf allure-results allure-report",
+
+    "allure:generate": "allure generate ./allure-results --clean",
+    "allure:open": "allure open ./allure-report",
+    "allure:serve": "allure serve ./allure-results",
+
+    "test:ui": "npm run clean:allure && playwright test --project=chromium-bdd",
+
+    "test:ui:headed": "npm run clean:allure && playwright test --project=chromium-bdd --headed",
+
+    "test:ui:debug": "npm run clean:allure && playwright test --project=chromium-bdd --debug",
+
+    "test:ui:report": "npm run test:ui && npm run allure:serve",
+
+    "test:ui:headed:report": "npm run test:ui:headed && npm run allure:serve",
+
+    "test:api": "npm run clean:allure && playwright test --project=api",
+
+    "test:api:get": "npm run clean:allure && playwright test tests/APITest/GETMethod.spec.js --project=api --reporter=list",
+
+    "test:api:report": "npm run test:api && npm run allure:serve",
+
+    "test:all": "npm run clean:allure && playwright test",
+
+    "test:all:headed": "npm run clean:allure && playwright test --headed",
+
+    "test:all:debug": "npm run clean:allure && playwright test --debug",
+
+    "test:all:report": "npm run test:all && npm run allure:serve",
+
+    "test:all:headed:report": "npm run test:all:headed && npm run allure:serve",
+
+    "test:ui:ci": "npm run test:ui",
+
+    "test:api:ci": "npm run test:api",
+
+    "test:all:ci": "npm run test:all"
+
   },
   "keywords": [],
   "author": "",
@@ -22,6 +52,8 @@
     "@cucumber/cucumber": "^12.8.1",
     "@playwright/test": "^1.59.1",
     "@types/node": "^25.6.0",
-    "playwright-bdd": "^8.5.0"
+    "allure-playwright": "^3.10.2",
+    "playwright-bdd": "^8.5.0",
+    "rimraf": "^6.1.3"
   }
 }
