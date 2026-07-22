@@ -11,11 +11,39 @@ on:
     branches:
       - main
       - master
+    paths:
+    - 'api/**'
+    - 'pages/**'
+    - 'assertions/**'
+    - 'world/**'
+    - 'hooks/**'
+    - 'utilities/**'
+    - 'config/**'
+    - 'constants/**'
+    - 'tests/**'
+    - 'playwright.config.js'
+    - 'package.json'
+    - 'package-lock.json'
+    - '.github/workflows/regression-tests.yml'
 
   pull_request:
     branches:
       - main
       - master
+    paths:
+    - 'api/**'
+    - 'pages/**'
+    - 'assertions/**'
+    - 'world/**'
+    - 'hooks/**'
+    - 'utilities/**'
+    - 'config/**'
+    - 'constants/**'
+    - 'tests/**'
+    - 'playwright.config.js'
+    - 'package.json'
+    - 'package-lock.json'
+    - '.github/workflows/regression-tests.yml'
 
 jobs:
 
@@ -40,6 +68,10 @@ jobs:
 
       - name: Install Dependencies
         run: npm ci
+
+      - name: Install Allure CLI
+        run: |
+          npm install -g allure-commandline --save-dev
 
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
