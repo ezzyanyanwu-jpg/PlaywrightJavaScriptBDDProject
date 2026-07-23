@@ -39,6 +39,11 @@ on:
     - 'package-lock.json'
     - '.github/workflows/ui-tests.yml'
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
 jobs:
 
   ui-tests:
@@ -59,6 +64,9 @@ jobs:
         with:
           node-version: 22
           cache: npm
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
 
       - name: Install Dependencies
         run: npm ci
@@ -86,6 +94,12 @@ jobs:
           path: allure-report/
           retention-days: 30
 
+      - name: Upload Allure Report to GitHub Pages
+        if: always()
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: allure-report
+
       - name: Upload Playwright HTML Report
         if: always()
         uses: actions/upload-artifact@v4
@@ -112,3 +126,27 @@ jobs:
       - name: Deploy
         run: |
           echo "Deploying to production..."
+
+  publish-report:
+
+        name: Publish Allure Report
+
+        needs: ui-tests
+
+        if: always()
+
+        runs-on: ubuntu-latest
+
+        environment:
+          name: github-pages
+          url: ${{ steps.deployment.outputs.page_url }}
+
+        permissions:
+          pages: write
+          id-token: write
+
+        steps:
+
+          - name: Deploy GitHub Pages
+            id: deployment
+            uses: actions/deploy-pages@v4
