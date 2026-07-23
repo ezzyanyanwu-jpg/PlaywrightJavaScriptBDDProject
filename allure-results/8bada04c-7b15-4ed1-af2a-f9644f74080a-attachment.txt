@@ -1,9 +1,0 @@
-[INFO] Opening OrangeHRM
-[INFO] Chrome browser launched
-[INFO] Verifying Login Page
-[INFO] Entering username: Admin
-[INFO] Clicking Login
-[INFO] Opening Leave Module
-[INFO] From : 2026-12-04
-[INFO] To : 2026-31-10
-[INFO] Scenario Finished
