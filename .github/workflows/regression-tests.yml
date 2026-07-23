@@ -86,7 +86,6 @@ jobs:
 
       - name: Execute Regression Suite
         run: npm run test:all:ci
-        continue-on-error: true
 
       - name: Generate Allure Report
         if: always()
@@ -139,7 +138,7 @@ jobs:
 
         needs: regression-tests
 
-        if: always()
+        if: always() && !cancelled()
 
         runs-on: ubuntu-latest
 

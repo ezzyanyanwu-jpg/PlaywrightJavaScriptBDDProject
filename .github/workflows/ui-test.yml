@@ -18,7 +18,7 @@ on:
     - 'playwright.config.js'
     - 'package.json'
     - 'package-lock.json'
-    - '.github/workflows/ui-tests.yml'
+    - '.github/workflows/ui-test.yml'
 
   pull_request:
     branches:
@@ -37,7 +37,7 @@ on:
     - 'playwright.config.js'
     - 'package.json'
     - 'package-lock.json'
-    - '.github/workflows/ui-tests.yml'
+    - '.github/workflows/ui-test.yml'
 
 permissions:
   contents: read
@@ -80,7 +80,6 @@ jobs:
 
       - name: Execute UI BDD Tests
         run: npm run test:ui:ci
-        continue-on-error: true
 
       - name: Generate Allure Report
         if: always()
@@ -133,7 +132,7 @@ jobs:
 
         needs: ui-tests
 
-        if: always()
+        if: always() && !cancelled()
 
         runs-on: ubuntu-latest
 

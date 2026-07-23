@@ -1,2 +1,0 @@
-[INFO] Verifying Status Code: 200
-[INFO] Verifying Header: content-type
