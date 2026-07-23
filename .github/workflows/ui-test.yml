@@ -6,6 +6,7 @@ on:
       - main
       - master
     paths:
+    - '.gitignore'
     - 'pages/**'
     - 'assertions/**'
     - 'world/**'
@@ -25,6 +26,7 @@ on:
       - main
       - master
     paths:
+    - '.gitignore'
     - 'pages/**'
     - 'assertions/**'
     - 'world/**'

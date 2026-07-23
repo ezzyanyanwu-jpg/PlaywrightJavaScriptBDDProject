@@ -8,6 +8,7 @@ on:
       - main
       - master
     paths:
+    - '.gitignore'
     - 'api/**'
     - 'tests/APITest/**'
     - 'testdata/apiData.json'
@@ -21,6 +22,7 @@ on:
       - main
       - master
     paths:
+    - '.gitignore'
     - 'api/**'
     - 'tests/APITest/**'
     - 'testdata/apiData.json'
